@@ -1334,6 +1334,8 @@
       text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
     }
 
+
+
     /* ——— SHINY TEXT EFFECT (React Bits Port) ——— */
     .shiny-text {
       display: inline-block;
@@ -1842,6 +1844,8 @@
       <div class="footer-credit">Crafted with love &nbsp;·&nbsp; <a href="https://www.zenorix.in" target="_blank">Zenorix</a></div>
     </div>
   </footer>
+
+
 
 
 
@@ -2425,10 +2429,29 @@
       if (scrollHint) {
         scrollHint.style.cursor = 'pointer';
         scrollHint.addEventListener('click', () => {
-          const nextSec = document.getElementById('sec-family');
+          const nextSec = document.getElementById('sec-event');
           if (nextSec) {
             nextSec.scrollIntoView({ behavior: 'smooth' });
           }
+        });
+      }
+    })();
+
+    /* ================================================================
+       AUDIO BACKGROUND MUSIC (iOS & Android compatible)
+    ================================================================ */
+    (function () {
+      const bgMusic = new Audio("assets/WhatsApp%20Audio%202026-07-06%20at%206.02.28%20PM.mpeg");
+      bgMusic.loop = true;
+      
+      const openBtn = document.getElementById('open-btn');
+      
+      if (openBtn) {
+        openBtn.addEventListener('click', () => {
+          // Play immediately inside the user click stack (critical for Safari iOS)
+          bgMusic.play().catch(err => {
+            console.log("Audio play blocked or failed:", err);
+          });
         });
       }
     })();
